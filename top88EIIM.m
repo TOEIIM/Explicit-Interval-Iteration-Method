@@ -15,7 +15,7 @@ edofVec = reshape(2*nodenrs(1:end-1,1:end-1)+1,nelx*nely,1);
 edofMat = repmat(edofVec,1,8)+repmat([0 1 2*nely+[2 3 0 1] -2 -1],nelx*nely,1);
 iK = reshape(kron(edofMat,ones(8,1))',64*nelx*nely,1);
 jK = reshape(kron(edofMat,ones(1,8))',64*nelx*nely,1);
-% DEFINE LOADS AND SUPPORTS (HALF MBB-BEAM)
+% DEFINE LOADS AND SUPPORTS
 F = sparse(2*(nelx+1)*(nely+1)-nely,1,-1,2*(nely+1)*(nelx+1),1);
 U = zeros(2*(nely+1)*(nelx+1),1);
 fixeddofs = [1:2*nely+1];
@@ -85,4 +85,5 @@ while loop < maxloop && change >= 0.01
     if ~mod(loop,p_k), p = min(20*p,2e4); p_k = max(20,floor(p_k/2)); end
     %% PLOT DENSITIES
     colormap(gray); imagesc(1-xPhys); caxis([0 1]); axis equal; axis off; drawnow;
+
 end
