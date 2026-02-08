@@ -85,5 +85,5 @@ while loop < maxloop && change >= 0.01
     if ~mod(loop,p_k), p = min(20*p,2e4); p_k = max(20,floor(p_k/2)); end
     %% PLOT DENSITIES
     colormap(gray); imagesc(1-xPhys); caxis([0 1]); axis equal; axis off; drawnow;
-
 end
+
